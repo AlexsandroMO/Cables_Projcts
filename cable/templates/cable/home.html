@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+
+<div id="div-alinha">
+    <h3>Lista de Projetos</h3>
+
+    <a id="add-link" href="{% url 'new-project' %}">
+        <button type="button" class="btn btn-success">Criar Projetos</button>
+    </a>
+    
+    {% if messages %}
+    <ul class="messages">
+       {% for message in messages %}
+            <li {% if message.tags %}class="alert alert-{{message.tags}}"{% endif %}>{{ message }}</li>
+       {% endfor %}
+    </ul>
+    {% endif %}
+
+    <table class="table-round-corner" cellspacing="0">
+        <tr>
+            <th>Entrar no Projeto</th>
+            <th>Nome do Projetos</th>
+            <th>Editar Projeto</th>
+            <th>Deletar Projeto</th>
+        </tr>
+        {% for item in project %}
+            <tr>
+                <td><a href="tasklist/{{item.id}}"><span><i class="fas fa-angle-double-right"></i></span></a></td>
+                <td>{{item.project}}</td>
+                <td><a href="editproject/{{item.id}}"><span><i class="fas fa-edit"></i></span></a></td>
+                <td><a href="deleteproject/{{item.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a></td>
+                
+            </tr>
+        {% endfor %}
+        
+    </table>
+</div>
+
+<br>
+<br>
+
+
+{% endblock %}
