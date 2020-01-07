@@ -5,6 +5,8 @@ from django.test import TestCase
 
 
 #https://www.geeksforgeeks.org/textfield-django-models/
+#https://realpython.com/django-redirects/#passing-parameters-with-redirects
+
 
 
 #pip3 install django-crispy-forms
