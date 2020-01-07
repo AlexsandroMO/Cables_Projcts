@@ -28,6 +28,7 @@ git clone <nome>
 git add .
 git commit -m "texto"
 git push
+git pull
 '''
 
 '''git checkout -b nome cria uma branch
