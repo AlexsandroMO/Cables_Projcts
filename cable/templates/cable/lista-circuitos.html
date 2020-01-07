@@ -27,7 +27,7 @@
             <th></th>
             <th>LOCAL</th>
             <th>TIPO</th>
-            <th id="th-w">TENSÃO (VA)</th>
+            <th>TENSÃO (VA)</th>
             <th>QUANT.</th>
             <th>POTÊNCIA (VA)</th>
             <th>TOTAL (VA)</th>
@@ -46,7 +46,7 @@
         </tr>
         {% for item in task %}
             <tr>
-                <td><a href="edittask/{{item.id}}"><span><i class="fas fa-edit"></i></span></a></td>
+                <td><a href="{% url 'edit-task' item.id  %}"><span><i class="fas fa-edit"></i></span></a></td>
                 <td>{{item.local}}</td>
                 <td>{{item.tipo}}</td>
                 <td>{{item.tensa_va}}</td>
@@ -63,7 +63,7 @@
                 <td>{{item.numero_polos}}</td>
                 <td>{{item.corrente_nominal}}</td>
                 <td>{{item.verifica_dj}}</td>
-                <td><a href="deletetask/{{item.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a></td>
+                <td><a href="{% url 'delete-task' item.id  %}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a></td>
                 
             </tr>
         {% endfor %}

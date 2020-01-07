@@ -86,3 +86,6 @@ def newTask(request):
 
 
 '''
+
+#urls ID
+#https://stackoverflow.com/questions/15608295/passing-an-id-in-django-url

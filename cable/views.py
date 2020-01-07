@@ -22,20 +22,15 @@ def taskList(request, id):
 
     project = main.read_sql_filter(id)
     name_project = project['project'][0]
-
+    
+    '''
     print('\n\n')
     print(project['project'][0])
     print('\n\n')
+    '''
     task = ResidencDimens.objects.filter(projeto_id=read_project).order_by('-local')
 
     return render(request, 'cable/lista-circuitos.html', {'task': task, 'name_project': name_project})
-
-
-def taskView(request):
-
-    task = ResidencDimens.objects.all().order_by('-local')
-
-    return render(request, 'cable/lista-circuitos.html', {'task': task})
 
 
 def newTask(request):
@@ -108,15 +103,17 @@ def editTask(request, id):
         if form.is_valid():
             task.save()
             return redirect('/')
+
         else:
-            return render(request, '/', {'form': form, 'task': task})
+            return render(request, 'cable/edit-task.html', {'form': form, 'task': task})
 
     else:
-        return render(request, '/cable/tasklist/{id}/edit-task.html', {'form': form, 'task': task})
-#cable/tasklist/{id}/edit-task.html
+        return render(request, 'cable/edit-task.html', {'form': form, 'task': task})
+
 
 def deleteTask(request, id):
     task = get_object_or_404(ResidencDimens, pk=id)
+
     task.delete()
 
     messages.info(request, 'Tarefa deletada com sucesso.')
@@ -151,7 +148,7 @@ def editProject(request, id):
 
         if form.is_valid():
             project.save()
-            return redirect('project-list')
+            return redirect('/')
         else:
             return render(request, 'cable/edit-project.html', {'form': form, 'project': project})
 
