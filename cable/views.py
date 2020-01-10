@@ -23,14 +23,10 @@ def taskList(request, id):
     project = main.read_sql_filter(id)
     name_project = project['project'][0]
     
-    '''
-    print('\n\n')
-    print(project['project'][0])
-    print('\n\n')
-    '''
     task = ResidencDimens.objects.filter(projeto_id=read_project).order_by('-local')
+    project = Project.objects.all()
 
-    return render(request, 'cable/lista-circuitos.html', {'task': task, 'name_project': name_project})
+    return render(request, 'cable/lista-circuitos.html', {'task': task, 'name_project': name_project, 'project': project})
 
 
 def newTask(request):
@@ -77,15 +73,19 @@ def newTask(request):
                 task.verifica_dj = 'OK'
             else:
                 task.verifica_dj = 'NÀO'
+
             #--------------------------------------------------
             id_x = task.projeto
             test = main.read_sql_filter_id(id_x)
             id_project = int(test['id'][0])
             #--------------------------------------------------
-            print(id_project)
+
             task.save()
 
-            return redirect('/')
+            link = '/tasklist'
+
+            url = '{}/{}'.format(link, id_project)
+            return redirect(url)
 
     else:
         form = ResidencDimensForm()
@@ -101,8 +101,19 @@ def editTask(request, id):
         form = ResidencDimensForm(request.POST, instance=task)
 
         if form.is_valid():
+
             task.save()
-            return redirect('/')
+
+            #---------------------------------------------
+            id_x = task.projeto
+            test = main.read_sql_filter_id(id_x)
+            id_project = int(test['id'][0])
+            #---------------------------------------------
+
+            link = '/tasklist'
+
+            url = '{}/{}'.format(link, id_project)
+            return redirect(url)
 
         else:
             return render(request, 'cable/edit-task.html', {'form': form, 'task': task})
@@ -117,7 +128,16 @@ def deleteTask(request, id):
     task.delete()
 
     messages.info(request, 'Tarefa deletada com sucesso.')
-    return redirect('/')
+
+    #--------------------------------------------------
+    id_x = task.projeto
+    test = main.read_sql_filter_id(id_x)
+    id_project = int(test['id'][0])
+    #--------------------------------------------------
+
+    link = '/tasklist'
+    url = '{}/{}'.format(link, id_project)
+    return redirect(url)
 
 #------------------------------
 
@@ -164,6 +184,12 @@ def deleteProject(request, id):
 
     return redirect('/')
 
+
+def test(request):
+
+    task = ResidencDimens.objects.all()
+
+    return render(request, 'cable/test.html', {'task': task})
 
 
 def helloworld(request):

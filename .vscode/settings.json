@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "venv\\Scripts\\python.exe"
+   "python.pythonPath": "/home/gitpod/.pyenv/versions/3.7.5/bin/python",
+   "editor.autoSave": "off"
 }

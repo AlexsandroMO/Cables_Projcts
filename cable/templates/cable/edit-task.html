@@ -6,7 +6,7 @@
 {% block content %}
 
 <div class="offset-1 col-10 list-div">
-    <h3>Editando {{  task.local }}</h3>
+    <h3>Editando Projeto {{  task.projeto }}</h3>
     <form method="POST">
         {% csrf_token %}
         {{form|crispy}}

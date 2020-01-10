@@ -32,10 +32,17 @@
             <li class="nav-item">
             <a class="nav-link" href="/accounts/register/">Cadastro</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="tasklist">Circuitos</a>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Circuitos</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    {% for item in project %}
+                    <a class="dropdown-item" href="{% url 'task-list' item.id %}">Projeto {{item.project}}</a>
+                    {% endfor %}
+                </div>
+                {% else %}
             </li>
-            {% else %}
+
                 <li class="nav-item">
                 <a class="nav-link" href="accounts/login">Entrar</a>
                 </li>
@@ -51,13 +58,11 @@
                 <a class="nav-link" href="#">&nbsp;</a>
             </li>
 
-           
                 <form method="GET" id="search-form">
                     <span><input class="form-control" type="search" id="search" name="search" placeholder="Localizar Circuito" value="{{request.GET.search}}">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-btn">Pesquisar</button></span>
                 </form>
-         
-
+  
           {% endif %}
         </ul>
       </div>
