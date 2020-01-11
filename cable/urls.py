@@ -16,5 +16,6 @@ urlpatterns = [
     #path('changestatus/<int:id>', views.changeStatus, name='change-status'),
     #path('fatura/', views.faturaTask, name='fatura-task'),
     path('helloworld/', views.helloworld),
+    path('test/', views.test, name='test'),
 
 ]

@@ -6,6 +6,8 @@ from .models import Project
 from .forms import ResidencDimensForm
 from .forms import ProjectForm
 from django.contrib import messages
+from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 import main
 from django import db
 
@@ -159,16 +161,23 @@ def newProject(request):
 
 
 def editProject(request, id):
-
     project = get_object_or_404(Project, pk=id)
+
     form = ProjectForm(instance=project)
+
+    print('\n\n\n')
+    print(form )
+    print('\n\n\n')
 
     if request.method == 'POST':
         form = ProjectForm(request.POST, instance=project)
 
         if form.is_valid():
+
             project.save()
+
             return redirect('/')
+
         else:
             return render(request, 'cable/edit-project.html', {'form': form, 'project': project})
 

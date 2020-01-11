@@ -6,6 +6,7 @@
     margin: 0;
 }
 
+/*
 body{
 
     white-space: nowrap;
@@ -14,6 +15,7 @@ body{
     overflow-y: hidden;
 
  }
+*/
 
  /* mobile phone */
 @media all and (max-width: 768px) {
@@ -291,7 +293,8 @@ ul.messages li{
 #ajusta-tabela::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: transparent;
-    opacity: .6; 
+    opacity: .8;
+
 }
 
 #ajusta-tabela::-webkit-scrollbar {
@@ -301,8 +304,8 @@ ul.messages li{
 }
 
 #ajusta-tabela::-webkit-scrollbar-thumb {
-    background-color: rgb(56, 52, 52);
-    opacity: .2; 
+    background-color: #DCDCDC;
+    opacity: .8; 
 }
 
 .table-round-corner {
@@ -352,6 +355,9 @@ table th{
 
 }
 
+#td-ajuste{
+    width: 150px;
+}
 
 
 /* 

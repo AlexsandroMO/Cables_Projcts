@@ -5,8 +5,12 @@ from django.test import TestCase
 
 
 #https://www.geeksforgeeks.org/textfield-django-models/
+<<<<<<< HEAD
 #https://realpython.com/django-redirects/#passing-parameters-with-redirects
 
+=======
+#https://www.w3schools.com/css/css_table.asp
+>>>>>>> homolog
 
 
 #pip3 install django-crispy-forms
@@ -39,6 +43,7 @@ git merge origin "nome"
 git push origin master - subir commit
 git branch -D "nome"- deletar branch
 '''
+
 
 
 #Heroku
