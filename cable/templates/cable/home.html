@@ -34,8 +34,8 @@
                 <td><a href="tasklist/{{item.id}}"><span><i class="fas fa-angle-double-right"></i></span></a></td>
                 <td>{{item.project}}</td>
                 <td><a href="editproject/{{item.id}}"><span><i class="fas fa-edit"></i></span></a></td>
-                <td><a href="deleteproject/{{item.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a></td>
-                
+                <td> {{item.id}}<a href="deleteproject/{{item.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a></td>
+               
             </tr>
         {% endfor %}
         

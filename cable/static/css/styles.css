@@ -304,8 +304,8 @@ ul.messages li{
 }
 
 #ajusta-tabela::-webkit-scrollbar-thumb {
-    background-color: rgb(56, 52, 52);
-    opacity: .2; 
+    background-color: #DCDCDC;
+    opacity: .8; 
 }
 
 .table-round-corner {
